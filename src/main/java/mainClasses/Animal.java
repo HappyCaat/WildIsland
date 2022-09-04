@@ -30,35 +30,57 @@ public abstract class Animal {
 
     }
 
+    //Животное питается
     public void eat() {
-        // nothing
+
     }
 
+    //Животное перемещается по локациям
     public void move() {
-        List<Location> moveTargets  = location.getNeighbors(speedToMoveOnCell);
+        List<Location> moveTargets = location.getNeighbors(speedToMoveOnCell);
         if (moveTargets.isEmpty()) {
             return;
         }
-        Location newLocation = moveTargets.get((int) (moveTargets.size() * Math.random()));
+
+        Location newLocation = getBestMoveLocation(moveTargets);
         location.getAnimals().remove(this);
         newLocation.getAnimals().add(this);
         location = newLocation;
     }
 
+    public Location getBestMoveLocation(List<Location> moveTargets) {
+        return moveTargets.get((int) (moveTargets.size() * Math.random()));
+    }
+
+    //Животное плодится
     public void reproduction() {
-        if (currentSatiate / foodToSatiate > 0.8) {
+        if (currentSatiate / foodToSatiate > 0.9) {
+            int count = 0;
+            for (Animal animal : location.getAnimals()) {
+                if (animal.getClass().equals(getClass())) {
+                    count++;
+                }
+            }
+            if (count > 50) {
+                return;
+            }
+
             Animal child = getChild();
             child.location = location;
             location.getAnimals().add(child);
-            System.out.println(child +" is born");
+            // System.out.println(child + " родился новый зверь");
+        }
+    }
+
+    //Животное умирает от голода
+    private void dieOfHunger() {
+        if (currentSatiate <= 0) {
+            location.getAnimals().remove(this);
+            // System.out.println(this + " животное умерло от голода");
         }
     }
 
     abstract public Animal getChild();
-
-    public void dieOfHunger() {
-
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -73,24 +95,16 @@ public abstract class Animal {
         return Objects.hash(probability, weigth, maxAnimalsOnCell, speedToMoveOnCell, foodToSatiate);
     }
 
-    public void doTick() {
+    public void animalBehavior() {
         if (isEaten) {
             return;
         }
-        // golod
-        currentSatiate -= foodToSatiate/ 10.0;
+        currentSatiate -= foodToSatiate / 10.0;
 
         move();
         eat();
-
         reproduction();
-
-
-        if (currentSatiate <= 0) {
-            // death
-            location.getAnimals().remove(this);
-            System.out.println(this + " is starved to death");
-        }
+        dieOfHunger();
 
     }
 }

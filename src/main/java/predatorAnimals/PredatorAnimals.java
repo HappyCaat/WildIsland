@@ -2,8 +2,10 @@ package predatorAnimals;
 
 import herbivoresAnimals.*;
 import mainClasses.Animal;
+import mainClasses.Location;
 import mainClasses.ProbabilityAnimals;
 
+import java.util.Comparator;
 import java.util.List;
 
 public abstract class PredatorAnimals extends Animal {
@@ -34,7 +36,6 @@ public abstract class PredatorAnimals extends Animal {
                 return;
             }
 
-
             if (currentSatiate > getFoodToSatiate()) {
                 return;
             }
@@ -42,10 +43,16 @@ public abstract class PredatorAnimals extends Animal {
 
             animalToEat.isEaten = true;
 
-            System.out.println(this + " eats " + animalToEat + " currentSatiate=" + currentSatiate + " of " + getFoodToSatiate());
+           // System.out.println(this + " съел " + animalToEat + " уровень насыщения = " + currentSatiate + " из " + getFoodToSatiate());
 
             currentSatiate += 1;
         }
+    }
+
+    @Override
+    public Location getBestMoveLocation(List<Location> moveTargets) {
+        moveTargets.sort(Comparator.comparingInt(c -> - c.getAnimals().size()));
+        return moveTargets.get(0);
     }
 
     @Override
@@ -105,8 +112,6 @@ public abstract class PredatorAnimals extends Animal {
         if (animal instanceof Sheep) {
             return probability.getProbabilitySheep();
         }
-
-
         return 0;
     }
 }

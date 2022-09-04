@@ -1,9 +1,11 @@
 package herbivoresAnimals;
 
 import mainClasses.Animal;
+import mainClasses.Location;
 import mainClasses.ProbabilityAnimals;
 import plants.Plants;
 
+import java.util.Comparator;
 import java.util.List;
 
 public abstract class HerbivoresAnimals extends Animal {
@@ -14,7 +16,6 @@ public abstract class HerbivoresAnimals extends Animal {
     @Override
     public void eat() {
         super.eat();
-
         List<Plants> plants = getLocation().getPlants();
 
         while (true) {
@@ -26,10 +27,14 @@ public abstract class HerbivoresAnimals extends Animal {
                 return;
             }
             plants.remove(0);
-
-            currentSatiate += 1;
+            currentSatiate += 0.3;
         }
+    }
 
+    @Override
+    public Location getBestMoveLocation(List<Location> moveTargets) {
+        moveTargets.sort(Comparator.comparingInt(c -> -c.getPlants().size()));
+        return moveTargets.get(0);
     }
 
     @Override

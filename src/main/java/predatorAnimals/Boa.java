@@ -5,7 +5,7 @@ import mainClasses.ProbabilityAnimals;
 
 public class Boa extends PredatorAnimals {
 
-    public Boa () {
+    public Boa() {
         super(new ProbabilityAnimals(0,
                 -1,
                 15,
@@ -21,7 +21,7 @@ public class Boa extends PredatorAnimals {
                 0,
                 10,
                 0,
-                0),15,30,1,3);
+                0), 15, 30, 1, 3);
     }
 
     @Override

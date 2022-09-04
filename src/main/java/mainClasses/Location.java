@@ -16,11 +16,11 @@ public class Location {
     public List<Location> getNeighbors(int maxDistance) {
         List<Location> result = new ArrayList<>();
 
-        for (int xx = x - maxDistance; xx < x + maxDistance; xx++) {
-            for (int yy = y - maxDistance; yy < y + maxDistance; yy++) {
-                if (xx >= 0 && xx < Options.WORLD_WIDTH) {
-                    if (yy >= 0 && yy < Options.WORLD_HEIGHT) {
-                        result.add(Options.islandArray.get(xx).get(yy));
+        for (int i = x - maxDistance; i < x + maxDistance; i++) {
+            for (int j = y - maxDistance; j < y + maxDistance; j++) {
+                if (i >= 0 && i < Options.WORLD_WIDTH) {
+                    if (j >= 0 && j < Options.WORLD_HEIGHT) {
+                        result.add(Options.islandList.get(i).get(j));
                     }
                 }
             }

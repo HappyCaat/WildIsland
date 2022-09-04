@@ -23,7 +23,7 @@ public class ProbabilityAnimals {
 
     public ProbabilityAnimals(int probabilityWolf, int probabilityBoa, int probabilityFox, int probabilityBear, int probabilityEagle, int probabilityHorse, int probabilityDeer, int probabilityRabbit, int probabilityMouse, int probabilityGoat, int probabilitySheep, int probabilityBoar, int probabilityBuffalo, int probabilityDuck, int probabilityCaterpillar, int probabilityPlants) {
 
-        this.probabilityWolf =probabilityWolf;
+        this.probabilityWolf = probabilityWolf;
         this.probabilityBoa = probabilityBoa;
         this.probabilityFox = probabilityFox;
         this.probabilityBear = probabilityBear;
