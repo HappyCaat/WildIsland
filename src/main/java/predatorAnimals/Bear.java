@@ -1,6 +1,7 @@
 package predatorAnimals;
 
 
+import mainClasses.Animal;
 import mainClasses.ProbabilityAnimals;
 
 public class Bear extends PredatorAnimals {
@@ -27,5 +28,10 @@ public class Bear extends PredatorAnimals {
     @Override
     public String toString() {
         return "\uD83D\uDC3B";
+    }
+
+    @Override
+    public Animal getChild() {
+        return new Bear();
     }
 }

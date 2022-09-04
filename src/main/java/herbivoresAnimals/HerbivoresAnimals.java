@@ -31,4 +31,9 @@ public abstract class HerbivoresAnimals extends Animal {
         }
 
     }
+
+    @Override
+    public Animal getChild() {
+        return null;
+    }
 }

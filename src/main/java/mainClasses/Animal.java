@@ -46,8 +46,15 @@ public abstract class Animal {
     }
 
     public void reproduction() {
-
+        if (currentSatiate / foodToSatiate > 0.8) {
+            Animal child = getChild();
+            child.location = location;
+            location.getAnimals().add(child);
+            System.out.println(child +" is born");
+        }
     }
+
+    abstract public Animal getChild();
 
     public void dieOfHunger() {
 
@@ -75,6 +82,8 @@ public abstract class Animal {
 
         move();
         eat();
+
+        reproduction();
 
 
         if (currentSatiate <= 0) {

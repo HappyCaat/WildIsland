@@ -1,5 +1,6 @@
 package herbivoresAnimals;
 
+import mainClasses.Animal;
 import mainClasses.ProbabilityAnimals;
 
 public class Duck extends HerbivoresAnimals {
@@ -26,5 +27,10 @@ public class Duck extends HerbivoresAnimals {
     @Override
     public String toString() {
         return "\uD83E\uDD86";
+    }
+
+    @Override
+    public Animal getChild() {
+        return new Duck();
     }
 }

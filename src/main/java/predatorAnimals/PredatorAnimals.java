@@ -48,6 +48,11 @@ public abstract class PredatorAnimals extends Animal {
         }
     }
 
+    @Override
+    public Animal getChild() {
+        return null;
+    }
+
     private boolean canEat(Animal animal, int myProb) {
         if (animal == this) {
             return false;

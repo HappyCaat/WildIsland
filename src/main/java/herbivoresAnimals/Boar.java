@@ -1,7 +1,9 @@
 package herbivoresAnimals;
 
 import mainClasses.*;
+import predatorAnimals.Boa;
 
+import java.awt.datatransfer.Clipboard;
 import java.util.List;
 import java.util.Random;
 
@@ -32,4 +34,8 @@ public class Boar extends HerbivoresAnimals {
     }
 
 
+    @Override
+    public Animal getChild() {
+        return new Boar();
+    }
 }
