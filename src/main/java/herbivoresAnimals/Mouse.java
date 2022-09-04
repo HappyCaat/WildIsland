@@ -1,9 +1,26 @@
 package herbivoresAnimals;
 
+import mainClasses.ProbabilityAnimals;
+
 public class Mouse extends HerbivoresAnimals {
 
     public Mouse() {
-        super(8, 0.05, 500, 1, 0.01);
+        super(new ProbabilityAnimals(0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                90,
+                100), 0.05, 500, 1, 0.01);
 
     }
 

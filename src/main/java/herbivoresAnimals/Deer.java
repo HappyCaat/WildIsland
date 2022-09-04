@@ -1,9 +1,26 @@
 package herbivoresAnimals;
 
+import mainClasses.ProbabilityAnimals;
+
 public class Deer extends HerbivoresAnimals {
 
     public Deer () {
-        super(6,300,20,4,50);
+        super(new ProbabilityAnimals(0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                100),300,20,4,50);
     }
 
 

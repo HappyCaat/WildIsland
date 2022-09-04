@@ -4,15 +4,13 @@ import herbivoresAnimals.Boar;
 import lombok.Getter;
 import plants.Plants;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 @Getter
 public class Island {
 
-    Options options = new Options();
+    //Options options = new Options();
 
 
     public void createAnimalsAndPlantsOnIsland() {
@@ -22,11 +20,11 @@ public class Island {
 
         for (List<Location> locations : islandArray) {
             for (Location location : locations) {
-                if (Math.random() > 0.5) {
-                    location.animals.add(animalsFactory.createRandomAnimal());
+                if (Math.random() > 0.7) {
+                    location.getAnimals().add(animalsFactory.createRandomAnimal());
                 }
                 if (Math.random() > 0.5) {
-                    location.plants.add(new Plants());
+                    location.getPlants().add(new Plants());
                 }
             }
         }
@@ -38,8 +36,8 @@ public class Island {
 
         for (List<Location> locations : Options.islandArray) {
             for (Location location : locations) {
-                if (!location.animals.isEmpty()) {
-                    animals.addAll(location.animals);
+                if (!location.getAnimals().isEmpty()) {
+                    animals.addAll(location.getAnimals());
                 }
             }
         }
@@ -53,12 +51,29 @@ public class Island {
 
         for (List<Location> locations : Options.islandArray) {
             for (Location location : locations) {
-                if (!location.plants.isEmpty()) {
-                    plants.addAll(location.plants);
+                if (!location.getPlants().isEmpty()) {
+                    plants.addAll(location.getPlants());
                 }
             }
         }
 
         return plants;
+    }
+
+    public void doTick() {
+        Set<Animal> madeTick = new HashSet<>();
+        for (List<Location> locations : Options.islandArray) {
+            for (Location location : locations) {
+                for (Animal animal : location.getAnimals()) {
+
+                    if (madeTick.contains(animal)) {
+                        continue; // already made turn
+                    }
+
+
+                    animal.eat();
+                }
+            }
+        }
     }
 }

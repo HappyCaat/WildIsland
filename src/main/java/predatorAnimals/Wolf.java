@@ -1,9 +1,25 @@
 package predatorAnimals;
 
+import mainClasses.ProbabilityAnimals;
+
 public class Wolf extends PredatorAnimals {
 
     public Wolf () {
-        super(0,50,30,3,8);
+        super(new ProbabilityAnimals(-1,
+                0,
+                0,
+                0,
+                0,
+                10,
+                15,
+                60,
+                80,
+                60,
+                70,
+                15,
+                10,
+                40,
+                0, 0),50,30,3,8);
 
     }
 

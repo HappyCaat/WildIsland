@@ -1,10 +1,27 @@
 package herbivoresAnimals;
 
+import mainClasses.ProbabilityAnimals;
+
 public class Buffalo extends HerbivoresAnimals {
 
 
     public Buffalo () {
-        super (12, 700,10,3,100);
+        super (new ProbabilityAnimals(0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                100), 700,10,3,100);
     }
 
     @Override

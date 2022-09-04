@@ -15,11 +15,12 @@ public class StartProgram {
 
         ScheduledExecutorService scheduledExecutorServiceForAnimals = Executors.newScheduledThreadPool(1);
 
+        island.createAnimalsAndPlantsOnIsland();
+
         Runnable islandTask = () -> {
             System.out.println("Day: " + new Counted().getId());
 
-            island.createAnimalsAndPlantsOnIsland();
-
+            island.doTick();
             Stata statistic = new Stata(island);
             statistic.printIslandField();
 

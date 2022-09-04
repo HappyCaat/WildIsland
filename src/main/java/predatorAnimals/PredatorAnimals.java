@@ -1,12 +1,11 @@
 package predatorAnimals;
 
 import mainClasses.Animal;
+import mainClasses.ProbabilityAnimals;
 
-import java.util.List;
-
-public class PredatorAnimals extends Animal {
-    public PredatorAnimals(int id, double weigth, int maxAnimalsOnCell, int speedToMoveOnCell, double foodToSatiate) {
-        super(id, weigth, maxAnimalsOnCell, speedToMoveOnCell, foodToSatiate);
+public abstract class PredatorAnimals extends Animal {
+    public PredatorAnimals(ProbabilityAnimals probability, double weigth, int maxAnimalsOnCell, int speedToMoveOnCell, double foodToSatiate) {
+        super(probability, weigth, maxAnimalsOnCell, speedToMoveOnCell, foodToSatiate);
     }
 
     @Override
@@ -14,8 +13,4 @@ public class PredatorAnimals extends Animal {
         super.eat();
     }
 
-    @Override
-    public void eat(List<Object> listForDelete) {
-
-    }
 }

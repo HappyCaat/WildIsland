@@ -1,6 +1,6 @@
 package herbivoresAnimals;
 
-import java.util.List;
+import mainClasses.ProbabilityAnimals;
 
 public class Boar extends HerbivoresAnimals {
 
@@ -9,9 +9,22 @@ public class Boar extends HerbivoresAnimals {
         return "\uD83D\uDC17";
     }
 
-    public Boar () {
-        super (11,400,50,2,50);
+    public Boar() {
+        super(new ProbabilityAnimals(0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                50,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                90,
+                100), 400, 50, 2, 50);
     }
-
-
 }

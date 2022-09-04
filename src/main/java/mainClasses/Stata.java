@@ -14,15 +14,16 @@ public class Stata {
         this.island = island;
     }
 
+    //Вывод острова в консоль
     public void printIslandField() {
 
         for (List<Location> locations : Options.islandArray) {
             for (Location location : locations) {
-                if (!location.animals.isEmpty()) {
-                    String str = location.animals.get(0).toString();
+                if (!location.getAnimals().isEmpty()) {
+                    String str = location.getAnimals().get(0).toString();
                     System.out.print(str);
-                } else if (!location.plants.isEmpty()) {
-                    System.out.print(location.plants.get(0));
+                } else if (!location.getPlants().isEmpty()) {
+                    System.out.print(location.getPlants().get(0));
                 } else {
                     System.out.print(" ");
                 }
@@ -41,12 +42,12 @@ public class Stata {
 
         countOfAnimal.forEach((k, v) -> System.out.println(k + ": " + v));
 
-        System.out.println("...............................");
+        System.out.println("..............");
+        System.out.println("Количество растений в локации");
 
         // Вывод общего количества травы
         int countOfPlants = island.getPlantsList().size();
-        System.out.println("\u2618 : " + countOfPlants);
-        System.out.println("###########################################");
+        System.out.println("\u2618: " + countOfPlants);
         System.out.println();
 
     }

@@ -1,9 +1,26 @@
 package herbivoresAnimals;
 
+import mainClasses.ProbabilityAnimals;
+
 public class Rabbit extends HerbivoresAnimals {
 
     public Rabbit () {
-        super (7,2,150,2,0.45);
+        super (new ProbabilityAnimals(0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                100),2,150,2,0.45);
     }
 
     @Override

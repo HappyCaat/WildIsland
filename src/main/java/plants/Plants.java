@@ -1,22 +1,16 @@
 package plants;
 
 import lombok.Getter;
+import mainClasses.ProbabilityAnimals;
 
 @Getter
-public class Plants{
+public class Plants {
 
+    private int weigth = 1;
 
-    private final int id = 15;
-    private final int weigth = 1;
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public Plants() {
+        new ProbabilityAnimals(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        this.weigth = getWeigth();
     }
 
     @Override
