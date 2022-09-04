@@ -14,6 +14,7 @@ public abstract class Animal {
     private final double weigth;
     private final int maxAnimalsOnCell;
     private final int speedToMoveOnCell;
+    public boolean isEaten;
     private double foodToSatiate;
     public double currentSatiate;
     private Location location;
@@ -66,6 +67,9 @@ public abstract class Animal {
     }
 
     public void doTick() {
+        if (isEaten) {
+            return;
+        }
         // golod
         currentSatiate -= foodToSatiate/ 10.0;
 
@@ -76,7 +80,7 @@ public abstract class Animal {
         if (currentSatiate <= 0) {
             // death
             location.getAnimals().remove(this);
-            System.out.println(this + " is dead");
+            System.out.println(this + " is starved to death");
         }
 
     }

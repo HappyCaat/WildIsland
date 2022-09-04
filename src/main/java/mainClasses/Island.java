@@ -18,13 +18,16 @@ public class Island {
 
         for (List<Location> locations : islandArray) {
             for (Location location : locations) {
-                if (Math.random() > 0.5) {
+
+                int animalCount = (int) (Math.random() * 100);
+                int plantsCount = (int) (Math.random() * 200);
+                for (int i = 0; i < animalCount; i++) {
                     Animal animal = animalsFactory.createRandomAnimal();
                     animal.setLocation(location);
                     location.getAnimals().add(animal);
-                    break;
                 }
-                if (Math.random() > 0.5) {
+
+                for (int i = 0; i < plantsCount; i++) {
                     location.getPlants().add(new Plants());
                 }
             }
