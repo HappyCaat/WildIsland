@@ -1,12 +1,10 @@
 package mainClasses;
 
-import herbivoresAnimals.Boar;
 import lombok.Getter;
 import plants.Plants;
 
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.ThreadLocalRandom;
+
 @Getter
 public class Island {
 
@@ -20,17 +18,21 @@ public class Island {
 
         for (List<Location> locations : islandArray) {
             for (Location location : locations) {
-                if (Math.random() > 0.7) {
-                    location.getAnimals().add(animalsFactory.createRandomAnimal());
+                if (Math.random() > 0.5) {
+                    Animal animal = animalsFactory.createRandomAnimal();
+                    animal.setLocation(location);
+                    location.getAnimals().add(animal);
+                    break;
                 }
                 if (Math.random() > 0.5) {
                     location.getPlants().add(new Plants());
                 }
             }
+            break;
         }
     }
 
-    public List<Animal> getAnimalsList() {
+    public List<Animal> getAllAnimals() {
 
         List<Animal> animals = new ArrayList<>();
 
@@ -61,19 +63,9 @@ public class Island {
     }
 
     public void doTick() {
-        Set<Animal> madeTick = new HashSet<>();
-        for (List<Location> locations : Options.islandArray) {
-            for (Location location : locations) {
-                for (Animal animal : location.getAnimals()) {
-
-                    if (madeTick.contains(animal)) {
-                        continue; // already made turn
-                    }
-
-
-                    animal.eat();
-                }
-            }
+        for (Animal animal : getAllAnimals()) {
+            animal.doTick();
         }
     }
 }
+

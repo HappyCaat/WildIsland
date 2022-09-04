@@ -8,9 +8,4 @@ public abstract class PredatorAnimals extends Animal {
         super(probability, weigth, maxAnimalsOnCell, speedToMoveOnCell, foodToSatiate);
     }
 
-    @Override
-    public void eat() {
-        super.eat();
-    }
-
 }

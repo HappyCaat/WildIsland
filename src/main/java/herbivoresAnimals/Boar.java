@@ -1,6 +1,9 @@
 package herbivoresAnimals;
 
-import mainClasses.ProbabilityAnimals;
+import mainClasses.*;
+
+import java.util.List;
+import java.util.Random;
 
 public class Boar extends HerbivoresAnimals {
 
@@ -27,4 +30,6 @@ public class Boar extends HerbivoresAnimals {
                 90,
                 100), 400, 50, 2, 50);
     }
+
+
 }

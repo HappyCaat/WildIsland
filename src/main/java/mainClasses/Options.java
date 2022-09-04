@@ -9,7 +9,7 @@ import java.util.List;
 public class Options {
     //параметры острова
 
-    public static final int WORLD_WIDTH = 5;
+    public static final int WORLD_WIDTH = 10;
     public static final int WORLD_HEIGHT = 15;
 
 
@@ -19,10 +19,10 @@ public class Options {
         for (int i = 0; i < WORLD_WIDTH; i++) {
             islandArray.add(new ArrayList<>());
             for (int j = 0; j < WORLD_HEIGHT; j++) {
-                Location loc = new Location();
-                loc.x = i;
-                loc.y = j;
-                islandArray.get(i).add(loc);
+                Location location = new Location();
+                location.x = i;
+                location.y = j;
+                islandArray.get(i).add(location);
 
             }
         }

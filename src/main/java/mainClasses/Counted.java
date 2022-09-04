@@ -2,7 +2,7 @@ package mainClasses;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-class Counted {
+public class Counted {
     private static final AtomicInteger COUNTER = new AtomicInteger(1);
 
     private final int id;

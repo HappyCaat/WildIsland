@@ -11,6 +11,7 @@ public class StartProgram {
     public static void main(String[] args) {
 
         Island island = new Island();
+        Stata statistic = new Stata(island);
 
 
         ScheduledExecutorService scheduledExecutorServiceForAnimals = Executors.newScheduledThreadPool(1);
@@ -18,12 +19,18 @@ public class StartProgram {
         island.createAnimalsAndPlantsOnIsland();
 
         Runnable islandTask = () -> {
-            System.out.println("Day: " + new Counted().getId());
+            try {
+                System.out.println("Day: " + new Counted().getId());
 
-            island.doTick();
-            Stata statistic = new Stata(island);
-            statistic.printIslandField();
+                island.doTick();
+                System.out.println("after do tick");
+                statistic.printIslandField();
+                System.out.println("end of job");
 
+            }catch (Throwable e) {
+                e.printStackTrace();
+                System.exit(0);
+            }
         };
 
         scheduledExecutorServiceForAnimals.scheduleAtFixedRate(islandTask, 1, 5, TimeUnit.SECONDS);

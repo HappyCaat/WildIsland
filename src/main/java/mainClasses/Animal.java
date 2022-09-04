@@ -1,17 +1,21 @@
 package mainClasses;
 
 import lombok.Getter;
+import lombok.Setter;
 
+import java.util.List;
 import java.util.Objects;
 
 @Getter
+@Setter
 public abstract class Animal {
 
     private final ProbabilityAnimals probability;
     private final double weigth;
-    private int maxAnimalsOnCell;
-    private int speedToMoveOnCell;
+    private final int maxAnimalsOnCell;
+    private final int speedToMoveOnCell;
     private double foodToSatiate;
+    private Location location;
 
 
     protected Animal(ProbabilityAnimals probability, double weigth, int maxAnimalsOnCell, int speedToMoveOnCell, double foodToSatiate) {
@@ -28,7 +32,14 @@ public abstract class Animal {
     }
 
     public void move() {
-
+        List<Location> moveTargets  = location.getNeighbors(speedToMoveOnCell);
+        if (moveTargets.isEmpty()) {
+            return;
+        }
+        Location newLocation = moveTargets.get((int) (moveTargets.size() * Math.random()));
+        location.getAnimals().remove(this);
+        newLocation.getAnimals().add(this);
+        location = newLocation;
     }
 
     public void reproduction() {
@@ -37,10 +48,6 @@ public abstract class Animal {
 
     public void dieOfHunger() {
 
-    }
-
-    public String getSimpleClassName() {
-        return this.getClass().getSimpleName();
     }
 
     @Override
@@ -54,5 +61,11 @@ public abstract class Animal {
     @Override
     public int hashCode() {
         return Objects.hash(probability, weigth, maxAnimalsOnCell, speedToMoveOnCell, foodToSatiate);
+    }
+
+    public void doTick() {
+        move();
+        eat();
+
     }
 }

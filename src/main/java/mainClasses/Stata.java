@@ -1,7 +1,5 @@
 package mainClasses;
 
-import plants.Plants;
-
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -37,10 +35,10 @@ public class Stata {
         System.out.println("Количество животных в данный момент в локации");
 
         //Вывод общего количества животных каждого вида
-                 Map<Animal, Long> countOfAnimal = island.getAnimalsList()
+                 Map<Animal, Long> countOfAnimal = island.getAllAnimals()
                  .stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        countOfAnimal.forEach((k, v) -> System.out.println(k + ": " + v));
+        countOfAnimal.forEach((k, v) -> System.out.print(k + ": " + v + ", "));
 
         System.out.println("..............");
         System.out.println("Количество растений в локации");

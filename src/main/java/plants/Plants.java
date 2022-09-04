@@ -9,7 +9,22 @@ public class Plants {
     private int weigth = 1;
 
     public Plants() {
-        new ProbabilityAnimals(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        new ProbabilityAnimals(0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0);
         this.weigth = getWeigth();
     }
 
