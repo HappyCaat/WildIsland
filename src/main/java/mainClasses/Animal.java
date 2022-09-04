@@ -15,6 +15,7 @@ public abstract class Animal {
     private final int maxAnimalsOnCell;
     private final int speedToMoveOnCell;
     private double foodToSatiate;
+    public double currentSatiate;
     private Location location;
 
 
@@ -24,11 +25,12 @@ public abstract class Animal {
         this.maxAnimalsOnCell = maxAnimalsOnCell;
         this.speedToMoveOnCell = speedToMoveOnCell;
         this.foodToSatiate = foodToSatiate;
+        this.currentSatiate = foodToSatiate / 2;
 
     }
 
     public void eat() {
-
+        // nothing
     }
 
     public void move() {
@@ -64,8 +66,18 @@ public abstract class Animal {
     }
 
     public void doTick() {
+        // golod
+        currentSatiate -= foodToSatiate/ 10.0;
+
         move();
         eat();
+
+
+        if (currentSatiate <= 0) {
+            // death
+            location.getAnimals().remove(this);
+            System.out.println(this + " is dead");
+        }
 
     }
 }
